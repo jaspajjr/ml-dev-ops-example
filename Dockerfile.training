@@ -1,0 +1,19 @@
+FROM jaspajjr/data-science-dockerfile
+
+COPY container-entrypoint-training.sh /entry/container-entrypoint.sh
+RUN chmod 0755 /entry
+
+RUN useradd -ms /bin/bash defaultUser && adduser defaultUser sudo
+
+COPY requirements.txt /data/requirements.txt
+RUN pip install -r /data/requirements.txt
+
+# RUN mkdir /results
+
+COPY src /data
+COPY data /data
+
+
+USER defaultUser
+CMD ["start"]
+ENTRYPOINT [ "/entry" ]
