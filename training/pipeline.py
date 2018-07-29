@@ -1,4 +1,4 @@
-from selectors import DataFrameColumnSelector
+from column_selectors import DataFrameColumnSelector
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression

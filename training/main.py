@@ -15,7 +15,7 @@ def fit_model(pipeline, X, y):
     '''
     Fits the provided pipeline.
     '''
-    return pipeline.fit(X, y)
+    return pipeline.fit(X, y.values.ravel())
 
 
 def persist_model(pipeline):

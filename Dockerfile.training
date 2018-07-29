@@ -14,5 +14,6 @@ COPY training /data
 COPY iris.csv /data
 
 USER defaultUser
-CMD ["start"]
-ENTRYPOINT [ "/entry" ]
+CMD ["/bin/bash"]
+# CMD ["start"]
+# ENTRYPOINT [ "/entry" ]
