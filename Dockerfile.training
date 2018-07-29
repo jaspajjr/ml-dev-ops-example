@@ -8,11 +8,10 @@ RUN useradd -ms /bin/bash defaultUser && adduser defaultUser sudo
 COPY requirements.txt /data/requirements.txt
 RUN pip install -r /data/requirements.txt
 
-# RUN mkdir /results
+RUN mkdir /results
 
-COPY src /data
-COPY data /data
-
+COPY training /data
+COPY iris.csv /data
 
 USER defaultUser
 CMD ["start"]

@@ -1,4 +1,6 @@
 import pandas as pd
+from pipeline import build_pipeline
+from sklearn.externals import joblib
 
 
 def load_data():
@@ -9,9 +11,26 @@ def load_data():
     return df
 
 
+def fit_model(pipeline, X, y):
+    '''
+    Fits the provided pipeline.
+    '''
+    return pipeline.fit(X, y)
+
+
+def persist_model(pipeline):
+    '''
+    Saves the pipeline to the results folder.
+    '''
+    joblib.dump(pipeline, '/results/pipeline.pkl')
+
+
 def main():
     df = load_data()
-    print(df)
+    X = df[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
+    y = df[['Species']]
+    pipe = fit_model(build_pipeline(X), X, y)
+    persist_model(pipe)
 
 
 if __name__ == '__main__':

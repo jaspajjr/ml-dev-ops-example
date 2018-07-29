@@ -13,6 +13,7 @@ def build_scaler_pipeline(field_name):
 
 def build_pipeline(X):
     '''
+    Takes the training dataframe, and returns a pipeline with a model.
     '''
     return Pipeline(steps=[
         ('preprocessing', FeatureUnion(
